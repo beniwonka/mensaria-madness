@@ -15,4 +15,6 @@ intended extensions—
 so there is a appeal to catch as many as you can.
                            
   * design more items + let the soup look toxic.
+  
+  * possibility to play on smartphone-browser & fill screen
                 
