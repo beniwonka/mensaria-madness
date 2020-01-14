@@ -1,0 +1,27 @@
+        @font-face { 
+            font-family: Score; src: url('Score.ttf'); 
+        }
+
+        #startBild {
+            background-color: #000;
+            position: absolute;
+            height: 700px;
+            width: 500px;
+        }
+
+        #startButton {
+            font-family: Score;
+            font-size: 20px;
+            color: #f48686;
+            background-color: transparent;
+            border: none;
+            position: absolute;
+            opacity: 1.0;
+            transition: opacity 0.6s;
+            height: 700px;
+            width: 500px;
+        }
+
+            #startButton:hover {
+                opacity: 0.0;
+            }
