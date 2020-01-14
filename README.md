@@ -6,7 +6,8 @@
 
 
 ###### *current rules— by catching the soup you lose a life (out of five) so avoid the soup!*
-                
+
+[PLAY HERE!](https://beniwonka.github.io/mensaria-madness/)
                 
 
 intended extensions—                           
