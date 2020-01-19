@@ -73,7 +73,7 @@ var gameOver = new Audio('Sound/gameover.wav');
             ctx.font = "15px Score";
             ctx.fillText("YOUR SCORE " + score, 125, 350);
             ctx.font = "10px Score";
-            ctx.fillText("GAME RESTARTS IN A SEC.", 120, 420);
+            ctx.fillText("GAME RESTARTS IN A SEC.", 120, 310);
             ctx.font = "15px Score";
             drawDeadPlayer();
             gameOver.play();
