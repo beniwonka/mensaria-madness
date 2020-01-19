@@ -75,13 +75,13 @@ var gameOver = new Audio('Sound/gameover.wav');
     function checkLeben() {
         if(lebenAbzug <= 1) {
             spielAudio.pause();
+            setInterval(function(){ countDownSec = countDownSec - 1 }, 1000);
             ctx.font = "30px Score";
             ctx.fillText("GAME OVER", 100, 300);
             ctx.font = "15px Score";
             ctx.fillText("YOUR SCORE " + score, 125, 350);
             ctx.font = "15px Score";
             ctx.fillText("GAME RESTART IN" + countDownSec, 100, 400);
-            setInterval(function(){ countDownSec = countDownSec - 1 }, 1000);
             drawDeadPlayer();
             gameOver.play();
             setInterval(function() { window.location.reload(true); }, 10000);
