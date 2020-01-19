@@ -18,5 +18,5 @@ so there is a appeal to catch as many as you can.
   
   * possibility to play on smartphone-browser & fill screen
   
-  * restart button or set intervall to reload page
+  * ~~restart button or set intervall to reload page~~
                 
