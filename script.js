@@ -223,6 +223,7 @@ var gameOver = new Audio('Sound/gameover.wav');
                     imgBg.src = 'Bilder/gameBG1.png';
                 
                 setInterval(draw, 110);
+                setInterval(checkLeben, 100);
 
                 for (var i = 0; i < noOfDrops; i++) {
                     var fallingDr = new Object();
