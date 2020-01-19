@@ -1,16 +1,10 @@
-# MENSARIA MADNESS
-
-#### a little casual game developed for a subject in university.
-
-
-
-
-###### *current rules— by catching the soup you lose a life (out of five) so avoid the soup!*
+# V1.1 // MENSARIA MADNESS
 
 [PLAY HERE!](https://beniwonka.github.io/mensaria-madness/)
                 
 
-intended extensions—                           
+Working on these extendsions by V1.1 
+                          
   * by letting items passing by, you are losing points
 so there is a appeal to catch as many as you can.
                            
@@ -18,5 +12,5 @@ so there is a appeal to catch as many as you can.
   
   * possibility to play on smartphone-browser & fill screen
   
-  * restart button or set intervall to reload page
+  * ~~restart button or set intervall to reload page~~
                 
