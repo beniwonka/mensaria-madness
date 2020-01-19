@@ -25,6 +25,7 @@ var y = 0;
 var noOfDrops = 5;
 var fallingDrops = [];
 var xAchse = [0, 100, 200, 300, 400];
+var countDownSec = 10;
 
 // Sound-Variablen
 var stepLinks = new Audio('Sound/links.wav');
@@ -62,6 +63,7 @@ var gameOver = new Audio('Sound/gameover.wav');
         imgLeben.src = 'Bilder/leben.png'
         ctx.drawImage (imgLeben, 0, 0, lebenAbzug, 20, 195, 650, lebenAbzug, 20);
     }
+    
 
     function checkLeben() {
         if(lebenAbzug <= 1) {
@@ -70,17 +72,21 @@ var gameOver = new Audio('Sound/gameover.wav');
             ctx.fillText("GAME OVER", 100, 300);
             ctx.font = "15px Score";
             ctx.fillText("YOUR SCORE " + score, 125, 350);
+            ctx.font = "10px Score";
+            ctx.fillText("GAME RESTARTS IN A SEC.", 120, 310);
+            ctx.font = "15px Score";
             drawDeadPlayer();
             gameOver.play();
+            setInterval(function() { window.location.reload(true); }, 10000);
             draw.stop();
+
+
             return;
                    
                    }
 
                 }
             
-        
-
         document.onkeydown=function(e) {
           pos=1;
           key=window.event?e.keyCode:e.which;
@@ -208,6 +214,7 @@ var gameOver = new Audio('Sound/gameover.wav');
                     imgBg.src = 'Bilder/gameBG1.png';
                 
                 setInterval(draw, 110);
+                setInterval(checkLeben, 100);
 
                 for (var i = 0; i < noOfDrops; i++) {
                     var fallingDr = new Object();
