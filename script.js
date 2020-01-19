@@ -84,6 +84,7 @@ var gameOver = new Audio('Sound/gameover.wav');
             ctx.fillText("GAME RESTART IN" + countDownSec, 100, 400);
             drawDeadPlayer();
             gameOver.play();
+            console.log(countDownSec);
             setInterval(function() { window.location.reload(true); }, 10000);
             draw.stop();
 
