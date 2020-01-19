@@ -72,9 +72,9 @@ var gameOver = new Audio('Sound/gameover.wav');
             ctx.fillText("YOUR SCORE " + score, 125, 350);
             drawDeadPlayer();
             gameOver.play();
+            setInterval(function() { window.location.reload(true); }, 10000);
             draw.stop();
 
-            setInterval(function() { window.location.reload(true); }, 10000);
 
             return;
                    
