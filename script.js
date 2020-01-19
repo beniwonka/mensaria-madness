@@ -25,6 +25,7 @@ var y = 0;
 var noOfDrops = 5;
 var fallingDrops = [];
 var xAchse = [0, 100, 200, 300, 400];
+var Interval = 10000
 
 // Sound-Variablen
 var stepLinks = new Audio('Sound/links.wav');
@@ -63,6 +64,8 @@ var gameOver = new Audio('Sound/gameover.wav');
         ctx.drawImage (imgLeben, 0, 0, lebenAbzug, 20, 195, 650, lebenAbzug, 20);
     }
 
+
+
     function checkLeben() {
         if(lebenAbzug <= 1) {
             spielAudio.pause();
@@ -72,7 +75,7 @@ var gameOver = new Audio('Sound/gameover.wav');
             ctx.fillText("YOUR SCORE " + score, 125, 350);
             drawDeadPlayer();
             gameOver.play();
-            setInterval(function() { window.location.reload(true); }, 10000);
+            setInterval(function() { window.location.reload(true); }, Interval);
             draw.stop();
 
 
