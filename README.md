@@ -11,9 +11,9 @@
 
 
 
-# V1.1 // MENSARIA MADNESS
+## V1.1 // MENSARIA MADNESS
 
-Working on these extendsions by V1.1 
+Working on these extensions (branch V1.1) 
                           
   * by letting items passing by, you are losing points
 so there is a appeal to catch as many as you can.
