@@ -64,24 +64,24 @@ var gameOver = new Audio('Sound/gameover.wav');
         ctx.drawImage (imgLeben, 0, 0, lebenAbzug, 20, 195, 650, lebenAbzug, 20);
     }
 
-    /*function countDown() {
+    function countDown() {
         ctx.font = "10px Score";
         ctx.fillStyle = "#000";
         ctx.fillText("GAME RESTART IN" + countDownSec, 600, 600);
         setInterval(function(){ countDownSec = countDownSec - 1 }, 1000);
-    }*/
+
     
 
     function checkLeben() {
         if(lebenAbzug <= 1) {
             spielAudio.pause();
-            setInterval(function(){ countDownSec = countDownSec - 1 }, 1000);
             ctx.font = "30px Score";
             ctx.fillText("GAME OVER", 100, 300);
             ctx.font = "15px Score";
             ctx.fillText("YOUR SCORE " + score, 125, 350);
             ctx.font = "15px Score";
-            ctx.fillText("GAME RESTART IN" + countDownSec, 100, 400);
+            countDown();
+            //ctx.fillText("GAME RESTARTS" + , 100, 400);
             drawDeadPlayer();
             gameOver.play();
             console.log(countDownSec);
