@@ -65,6 +65,8 @@ var gameOver = new Audio('Sound/gameover.wav');
     }
 
     function countDown() {
+        ctx.font = "10px Score";
+        ctx.fillStyle = "#000";
         ctx.fillText("GAME RESTART IN" + countDownSec, 600, 600);
         setInterval(function(){ countDownSec = countDownSec - 1 }, 1000);
     }
