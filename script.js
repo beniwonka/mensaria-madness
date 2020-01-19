@@ -73,6 +73,9 @@ var gameOver = new Audio('Sound/gameover.wav');
             drawDeadPlayer();
             gameOver.play();
             draw.stop();
+
+            setInterval(function() { ctx.restore(); }, 10000);
+
             return;
                    
                    }
