@@ -18,6 +18,8 @@ so there is a appeal to catch as many as you can.
                            
   * design more items + ~~let the soup look toxic.~~
   
-  * possibility to play on smartphone-browser & fill screen
+  * possibility to play on smartphone-browser
+  
+  * ~~responsive canvas~~
   
   * ~~restart button or set intervall to reload page~~
