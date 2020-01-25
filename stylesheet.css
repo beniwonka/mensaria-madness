@@ -35,7 +35,7 @@ html {
         }
 
 
-        @media (max-width: 767.98px) {
+        @media (max-width: 812px) {
         	#Li {
         	float: left;
         	width: 50%;
