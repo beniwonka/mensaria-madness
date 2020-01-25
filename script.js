@@ -1,3 +1,7 @@
+ window.addEventListener('scroll', noScroll);
+
+/*          Spiel Variablen definieren           */
+
 // Canvas
 var ctx;
 var imgBg;
@@ -22,7 +26,8 @@ var img = ["Bilder/gerichteins.png", "Bilder/gerichtzwei.png", "Bilder/gerichtdr
 var imgDrops;
 var x = 100;
 var y = 0;
-var noOfDrops = 5;
+var noOfDrops = 4;
+var itemSpeed = 7;
 var fallingDrops = [];
 var xAchse = [0, 100, 200, 300, 400];
 var countDownSec = 10;
@@ -35,6 +40,9 @@ var audioFangen = new Audio('Sound/gefangen.wav');
 var audioFalsch = new Audio('Sound/falsch.wav');
 var gameOver = new Audio('Sound/gameover.wav');
 
+
+/*          Spiel Funktionen           */
+
     function drawScore() {
         ctx.font = "10px Score";
         ctx.fillStyle = "#000";
@@ -42,7 +50,7 @@ var gameOver = new Audio('Sound/gameover.wav');
         if (score == 0){ ctx.fillText("SCORE " + '0000'+ score, 197, 85); }
         if (score >= 10 && score < 100){ ctx.fillText("SCORE " + '000'+ score, 197, 85); }
         if (score >= 100 && score < 1000){ ctx.fillText("SCORE " + '00'+ score, 197, 85); }
-        if (score >= 1000 && score < 10000){ ctx.fillText("SCORE " + '0'+ score, 197, 85); }
+        if (score >= 1000 && score < 10000){ ctx.fillText("SCORE " + '0'+ score, 197, 85);}
     }
 
     function drawPlayer () {
@@ -86,11 +94,53 @@ var gameOver = new Audio('Sound/gameover.wav');
                    }
 
                 }
-            
+
+    function minusLeben() {
+               for (j = 0; j < noOfDrops; j++) {
+                    if (((playY) - (fallingDrops[j]["y"]) <= 60) && ((playX) == (fallingDrops[j]["x"])) && (fallingDrops[j].image.src.indexOf('vier')) != ('-1')) {
+                    score -= 10;
+                    lebenAbzug -= 21; 
+
+                    fallingDrops[j].y = 0;
+                    fallingDrops[j].image.src = imgRandom(img);
+                    fallingDrops[j].x = xAchse[Math.floor(Math.random()*xAchse.length)];
+                    fallingDrops[j].speed = itemSpeed + Math.random() * itemSpeed; 
+
+                    drawScore();
+                    drawLeben();
+                    audioFalsch.play();
+
+                            }
+                        }   
+                    }
+
+        function plusPoints() {
+                for (h = 0; h < noOfDrops; h++) {
+                    if (((playY) - (fallingDrops[h]["y"]) <= 60) && ((playX) == (fallingDrops[h]["x"])) && (fallingDrops[h].image.src.indexOf('vier')) == ('-1')) {
+                    score += 10;
+
+                    fallingDrops[h].y = 0;
+                    fallingDrops[h].image.src = imgRandom(img);
+                    fallingDrops[h].x = xAchse[Math.floor(Math.random()*xAchse.length)];
+                    fallingDrops[h].speed = itemSpeed + Math.random() * itemSpeed;                   
+                        
+                    drawScore();
+                    audioFangen.play();
+
+                        }
+                    }
+                }
+
+        // Kontroller-Funkionen
+
         document.onkeydown=function(e) {
           pos=1;
           key=window.event?e.keyCode:e.which;
         }
+
+        function noScroll() {
+                window.scrollTo(0, 0);
+                    }
 
         document.onkeyup=function(e){
             pos=0;
@@ -100,57 +150,31 @@ var gameOver = new Audio('Sound/gameover.wav');
             return imgArr[Math.floor(Math.random() * imgArr.length)];
         }
 
-        function minusLeben() {
-                    for (j = 0; j < noOfDrops; j++) {
-                        if (((playY) - (fallingDrops[j]["y"]) <= 60) && ((playX) == (fallingDrops[j]["x"])) && (fallingDrops[j].image.src.indexOf('vier')) != ('-1')) {
-                        score -= 10;
-                        lebenAbzug -= 21; 
-
-                        fallingDrops[j].y = 0;
-                        fallingDrops[j].image.src = imgRandom(img);
-                        fallingDrops[j].x = xAchse[Math.floor(Math.random()*xAchse.length)];
-                        fallingDrops[j].speed = 6 + Math.random() * 6; 
-
-                        drawScore();
-                        drawLeben();
-                        audioFalsch.play();
-
-                            }
-
-                        }   
+        function playerMoveLeft(){
+            if (playX < minX) {
+                        playX = 0; 
+                    } else { playX = playX - step;
                     }
+                stepLinks.play();
+                }
 
-        function plusPoints() {
-                    for (h = 0; h < noOfDrops; h++) {
-                        if (((playY) - (fallingDrops[h]["y"]) <= 60) && ((playX) == (fallingDrops[h]["x"])) && (fallingDrops[h].image.src.indexOf('vier')) == ('-1')) {
-                        score += 10;
-
-                        fallingDrops[h].y = 0;
-                        fallingDrops[h].image.src = imgRandom(img);
-                        fallingDrops[h].x = xAchse[Math.floor(Math.random()*xAchse.length)];
-                        fallingDrops[h].speed = 6 + Math.random() * 6;                   
-                        
-                        drawScore();
-                        audioFangen.play();
-
-                            }
-
-                        }   
+        function playerMoveRight(){
+            if (playX > maxX) {
+                        playX = 400; 
+                    } else { playX = playX + step;
                     }
+                stepRechts.play();
+            }
+        
 
-    /* ! Spiel pausieren 
-        if(keyCode==32){
-        paused = !paused;
-                }*/
+
+
+
+/*          Spiel Ablauf           */
 
     function startGame() {  
 
         startBild.style.display = 'none';
-
-            /*if(paused) {
-                ctx.fillText('Pause', width/2, height/2);
-                return;
-            }*/ 
 
             function draw() {
 
@@ -163,8 +187,7 @@ var gameOver = new Audio('Sound/gameover.wav');
                 drawLeben();
 
 
-                for (var i=0; i < noOfDrops; i++)
-                {
+                for (var i=0; i < noOfDrops; i++) {
                 ctx.drawImage (fallingDrops[i].image, fallingDrops[i].x, fallingDrops[i].y); 
 
                 fallingDrops[i].y += fallingDrops[i].speed; 
@@ -172,10 +195,8 @@ var gameOver = new Audio('Sound/gameover.wav');
                 fallingDrops[i].image.src = imgRandom(img);
                 fallingDrops[i].y = 0 
                 fallingDrops[i].x = xAchse[Math.floor(Math.random()*xAchse.length)];
-                fallingDrops[i].speed = 6 + Math.random() * 6;
-                    
+                fallingDrops[i].speed = itemSpeed + Math.random() * 6;                
             }
-
         }
                 if(pos==0)return;
 
@@ -194,12 +215,12 @@ var gameOver = new Audio('Sound/gameover.wav');
                     }
                 stepRechts.play();
             }
-
-        }
+         }
 
 
             function setup() {
                 var canvas = document.getElementById('canvasRegn');
+                window.addEventListener('scroll', noScroll);
 
                 spielAudio.addEventListener('ended', function() {
                 spielAudio.currentTime = 0;
@@ -215,6 +236,8 @@ var gameOver = new Audio('Sound/gameover.wav');
                 
                 setInterval(draw, 110);
                 setInterval(checkLeben, 100);
+                playerMoveRight();
+                playerMoveLeft();
 
                 for (var i = 0; i < noOfDrops; i++) {
                     var fallingDr = new Object();
@@ -223,13 +246,10 @@ var gameOver = new Audio('Sound/gameover.wav');
 
                     fallingDr["x"] = xAchse[Math.floor(Math.random()*xAchse.length)];
                     fallingDr["y"] = 0;
-                    fallingDr["speed"] = 6 + Math.random() * 6;
-                    fallingDrops.push(fallingDr); 
-
+                    fallingDr["speed"] = itemSpeed + Math.random() * itemSpeed;
+                    fallingDrops.push(fallingDr);
                     }
-
                 }
-
             }
 
 

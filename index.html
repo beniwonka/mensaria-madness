@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html width="500" height="700">
 <head>
 
     <title>MENSARIA MADNESS</title>
@@ -8,12 +8,16 @@
 
 </head>
 
-<body>
+<body width="500" height="700">
 
     <div id="startBild" width="500" height="700">
     <img id="loading" src="Bilder/logo.png" width="500" height="700" onclick="startGame();" />
     </div>
     <canvas id="canvasRegn" width="500" height="700"></canvas>
+    <div id="controller" src="controller" width="500" height="100">
+    	<img id="Li" src="Bilder/controllerLi.png" width="250" height="100" onclick="playerMoveLeft();">
+    	<img id="Re" src="Bilder/controllerRe.png" width="250" height="100" onclick="playerMoveRight();">
+    </div>
 
 </body>
 </html>
