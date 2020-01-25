@@ -30,12 +30,6 @@ html {
                margin:0 auto;
             }
 
-        #controller {
-        	display: none;
-        }
-
-
-        @media only screen and (max-width: 600px) {
         	#Li {
         	float: left;
         	width: 50%;
