@@ -17,3 +17,5 @@ Working on these extensions (branch V1.2)
 so there is a appeal to catch as many as you can.
                            
   * design more items
+  
+  * local hightscore storage
