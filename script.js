@@ -1,5 +1,3 @@
- window.addEventListener('scroll', noScroll);
-
 /*          Spiel Variablen definieren           */
 
 // Canvas
@@ -42,6 +40,10 @@ var gameOver = new Audio('Sound/gameover.wav');
 
 
 /*          Spiel Funktionen           */
+
+    function styleSheet(sheet) {
+    document.getElementById('changeStyle').setAttribute('href', sheet);  
+    }
 
     function drawScore() {
         ctx.font = "10px Score";
@@ -138,9 +140,6 @@ var gameOver = new Audio('Sound/gameover.wav');
           key=window.event?e.keyCode:e.which;
         }
 
-        function noScroll() {
-                window.scrollTo(0, 0);
-                    }
 
         document.onkeyup=function(e){
             pos=0;
@@ -174,7 +173,6 @@ var gameOver = new Audio('Sound/gameover.wav');
 
     function startGame() {  
 
-        startBild.style.display = 'none';
 
             function draw() {
 
@@ -219,8 +217,9 @@ var gameOver = new Audio('Sound/gameover.wav');
 
 
             function setup() {
+
                 var canvas = document.getElementById('canvasRegn');
-                window.addEventListener('scroll', noScroll);
+
 
                 spielAudio.addEventListener('ended', function() {
                 spielAudio.currentTime = 0;

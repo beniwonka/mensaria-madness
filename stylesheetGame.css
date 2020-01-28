@@ -1,0 +1,74 @@
+        @font-face { 
+            	font-family: Score; src: url('Score.ttf'); 
+       		}
+
+		html {
+				background-color: black;
+			}
+
+          #startBild {
+            display:none;
+        }
+
+        #canvasRegn {
+        	touch-action: manipulation;
+	        width: 80%;
+	        height: 80%;
+	        display:block;
+	        margin:0 auto;
+        }
+
+
+        #Li {
+	        float: left;
+	        width: 50%;
+	        height: auto;
+	        margin: 0 auto;
+	    }
+
+        #Re {
+	        float: left;
+	        width: 50%;
+	        height: auto;
+	        margin: 0 auto;
+	    }
+
+	    #controller {
+	   	touch-action: manipulation;
+	    display:table-cell;
+	    vertical-align:middle;
+
+	    width: 80%;
+	    height: 80%;
+	    margin: auto;
+
+        }
+
+
+@media only screen and (min-width: 769px) {
+
+          #startBild {
+			display: none;
+             }
+
+        #canvasRegn {
+	            width: 40%;
+	            height: 40%;
+	            display:block;
+	            margin:0 auto;
+            }
+
+        #controller {
+
+        		display: none;
+        }
+
+}
+
+
+
+
+
+        
+
+
