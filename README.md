@@ -1,6 +1,6 @@
 # MENSARIA MADNESS // V1.1
 
-#### a little javascript casual game developed for a subject in university. (possible to play on desktop or mobile)
+#### a little javascript casual game developed for a subject in university.
 
 
 
